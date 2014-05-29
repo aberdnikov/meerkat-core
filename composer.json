@@ -1,5 +1,5 @@
 {
-	"name": "meerkat/core",
+	"name": "meerkat/meerkat-core",
 	"type": "kohana-module",
 	"description": "Core module for MeerkatCMF (on Kohana 3.3)",
 	"homepage": "http://github.com/meerkat/core",
