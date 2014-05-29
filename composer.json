@@ -21,6 +21,15 @@
 	"require": {
 			"php": ">=5.3",
 			"composer/installers": "*",
+			"meerkat/kohana-core": "*",
+			"meerkat/kohana-auth": "*",
+			"meerkat/kohana-database": "*",
+			"meerkat/kohana-orm": "*",
+			"meerkat/kohana-cache": "*",
+			"meerkat/kohana-image": "*",
+			"meerkat/kohana-minion": "*",
+			"meerkat/kohana-unittest": "*",
+			"meerkat/kohana-userguide": "*",
 			"meerkat/twig": "*",
 			"meerkat/htmlpurifier": "*"
 	},
