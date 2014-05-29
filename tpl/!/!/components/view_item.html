@@ -1,0 +1,14 @@
+<table class="table table-striped">
+    {% set values = view_item.as_array %}
+    {% set labels = view_item.labels %}
+    {% for field in fields %}
+        {% set value = arr_get(values, field )%}
+        {% if value is array %}
+            {% set value = arr_get(value, '__toString' )%}
+        {% endif %}
+        <tr>
+            <th class="col-lg-4">{{ view_item.label(field) }}</th>
+            <td>{{ value|raw }}</td>
+        </tr>
+    {% endfor %}
+</table>

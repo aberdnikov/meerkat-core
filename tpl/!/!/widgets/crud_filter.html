@@ -1,0 +1,13 @@
+<div class="well">
+    <form action="{{ base_url }}" class="row meerkat_filter">
+        {% for k,v in filter_ext %}
+            <input type="hidden" name="{{ k }}" value="{{ v }}">
+        {% endfor %}
+        <input type="text" class="form-control" id="filter" placeholder="Фильтр" name="filter" value="{{ filter }}">
+        <button type="submit" class="btn btn-info col-lg-2">Найти</button>
+    </form>
+    {% if me('is_admin') %}
+    <span class="ajax" data-action="show_sql">Show SQL</span>
+    <div class="hide"><pre>{{ last_query }}</pre></div>
+    {% endif %}
+</div>

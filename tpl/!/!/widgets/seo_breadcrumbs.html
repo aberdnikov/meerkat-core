@@ -1,0 +1,12 @@
+{% set breadcrumbs = seo('breadcrumbs') %}
+{% if breadcrumbs %}
+    <ul class="breadcrumb">
+        {% for item in breadcrumbs %}
+            {% if loop.last %}
+        <li class="active">{{ item[0] }}</li>        
+            {% else %}
+        <li><a href="{{ item[1] }}">{{ item[0] }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}

@@ -1,0 +1,138 @@
+{# Number of page links in the begin and end of whole range #}
+{% set count_out = config.count_out ? config.count_out|int : 3 %}
+
+{# Number of page links on each side of current page #}
+{% set count_in = config.count_in ? config.count_in|int : 2 %}
+
+{#
+    {% set per_page = config.per_page %}
+    Beginning group of pages: $n1...$n2
+#}
+{% set n1 = 1 %}
+{% set n2 = min(count_out, total_pages) %}
+
+{#
+    Ending group of pages: $n7...$n8
+#}
+{% set n7 = max(1, total_pages - count_out + 1) %}
+{% set n8 = total_pages %}
+
+{# Middle group of pages: $n4...$n5 #}
+{% set n4 = min(total_pages, max(n2 + 1, current_page - count_in)) %}
+
+{% set n5 = min(n7 - 1, current_page + count_in)|int %}
+{% set use_middle = (n5 and (n5 >= n4)) %}
+
+{# Point $n3 between $n2 and $n4 #}
+{% set n3 = ((n2 + n4) / 2)|int %}
+{% set use_n3 = (use_middle and ((n4 - n2) > 1)) %}
+
+{# Point $n6 between $n5 and $n7 #}
+{% set n6 = ((n5 + n7) / 2)|int %}
+{% set use_n6 = (use_middle and ((n7 - n5) > 1)) %}
+
+{# Links to display as array(page => content) #}
+{% set links=[] %}
+
+{# Generate links data in accordance with calculated numbers #}
+{% for i in range(n1, n2) %}
+    {% set links = arr_set(links,i,i) %}
+{% endfor %}
+{% if use_n3 %}
+    {% set links = arr_set(links, n3, '&hellip;') %}
+{% endif%}
+{% if use_middle %}
+    {% for i in range(n4, n5) %}
+        {% set links = arr_set(links,i,i) %}
+    {% endfor %}
+{% endif%}
+{% if use_n6 %}
+    {% set links = arr_set(links, n6, '&hellip;') %}
+{% endif%}
+{% for i in range(n7, n8) %}
+    {% set links = arr_set(links,i,i) %}
+{% endfor %}
+{#
+{{ var_dump(total_pages, 'total_pages') }}
+{{ var_dump(current_page, 'current_page') }}
+{{ var_dump(count_in, 'count_in') }}
+{{ var_dump(count_out, 'count_out') }}
+{{ var_dump(n1, 'n1') }}
+{{ var_dump(n2, 'n2') }}
+{{ var_dump(n3, 'n3') }}
+{{ var_dump(n4, 'n4') }}
+{{ var_dump(n5, 'n5') }}
+{{ var_dump(n6, 'n6') }}
+{{ var_dump(n7, 'n7') }}
+{{ var_dump(n8, 'n8') }}
+{{ var_dump(links, 'links') }}
+#}
+
+{# назад/вперед  #}
+{% if config.pager and in_array("top",config.pager) %}
+<ul class="pager">
+    {% if previous_page %}
+        <li{% if in_array("aligned",config.pager)%} class="previous"{% endif%}><a data-page="{{ previous_page }}" href="{{ page.url(previous_page) }}">← Туда</a></li>
+    {% else %}
+        <li class="disabled{% if in_array("aligned",config.pager)%} previous{% endif%}"><a href="#">← Туда</a></li>
+    {% endif %}
+    {% if next_page %}
+        <li{% if in_array("aligned",config.pager)%} class="next"{% endif%}><a data-page="{{ next_page }}" href="{{ page.url(next_page) }}">Сюда →</a></li>
+    {% else %}
+        <li class="disabled{% if in_array("aligned",config.pager)%} next{% endif%}"><a href="#">Сюда →</a></li>
+    {% endif %}
+</ul>
+{% endif %}
+
+{# размер #}
+{% if config.size=="large" %}
+    {% set size = ' pagination-lg' %}
+{% elseif config.size=="small" %}
+    {% set size = ' pagination-sm' %}
+{% else %}
+    {% set size = '' %}
+{% endif %}
+<ul class="pagination{{ size }}">
+    <li class="disabled">
+        <a href="#">
+            {% if current_last_item == current_first_item %}
+                {% set from_to = number_format(current_first_item, 0, '.', '.') %}
+            {% else %}
+                {% set from_to = 'С ' ~ number_format(current_first_item, 0, '.', '.') ~ ' по ' ~ number_format(current_last_item, 0, '.', '.') %}
+            {% endif %}
+            {{ from_to }} из {{ number_format(total_items, 0, '.', '.') }}
+        </a>
+    </li>
+{% if previous_page %}
+    <li><a data-page="{{ previous_page }}" href="{{ page.url(previous_page) }}">←</a></li>
+{% else %}
+    <li class="disabled"><a href="#">←</a></li>
+{% endif %}
+{% for number, content in links %}
+    {% if (number == current_page) %}
+        <li class="active"><a data-page="{{ number }}" href="{{ page.url(number) }}">{{ content|raw }}</a></li>
+    {% else %}
+        <li><a data-page="{{ number }}" href="{{ page.url(number) }}">{{ content|raw }}</a></li>
+    {% endif %}
+{% endfor %}
+{% if next_page %}
+    <li><a data-page="{{ next_page }}" href="{{ page.url(next_page) }}">→</a></li>
+{% else %}
+    <li class="disabled"><a data-page="1" href="#">→</a></li>
+{% endif %}
+</ul>
+{# назад/вперед  #}
+{% if config.pager and in_array("bottom",config.pager) %}
+<ul class="pager">
+    {% if previous_page %}
+        <li{% if in_array("aligned",config.pager)%} class="previous"{% endif%}><a data-page="{{ previous_page }}" href="{{ page.url(previous_page) }}">← Туда</a></li>
+    {% else %}
+        <li class="disabled{% if in_array("aligned",config.pager)%} previous{% endif%}"><a href="#">← Туда</a></li>
+    {% endif %}
+    {% if next_page %}
+        <li{% if in_array("aligned",config.pager)%} class="next"{% endif%}><a data-page="{{ next_page }}" href="{{ page.url(next_page) }}">Сюда →</a></li>
+    {% else %}
+        <li class="disabled{% if in_array("aligned",config.pager)%} next{% endif%}"><a href="#">Сюда →</a></li>
+    {% endif %}
+</ul>
+{% endif %}

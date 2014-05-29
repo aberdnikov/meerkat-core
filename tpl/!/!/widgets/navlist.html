@@ -1,0 +1,27 @@
+{% macro items(items) %}
+    {% for item in items %}
+        {% set class = '' %}
+        {% if menu_item_active(item.item.url) %}
+            {% set class = class~' active' %}
+        {% endif %}
+        <li{% if class %} class="{{ class }}"{% endif %}>
+            <a href="/{{ item.item.url }}">{{ item.item.text|raw }}</a>
+            {% if item._items %}
+                <ul class="nav">
+                    {{ _self.items(item._items) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% for group, map in items %}
+<div class="panel panel-default">
+    {% if group %}
+    <div class="panel-heading">{{ group }}</div>
+    {% endif %}
+        <ul class="nav bs-sidenav">
+            {{ _self.items(map) }}
+        </ul>
+</div>
+{% endfor %}

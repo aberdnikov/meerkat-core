@@ -1,0 +1,6 @@
+Здравствуйте, {{ username }}!
+Ваш приглашают на проект {{ HTTP_HOST }}.
+
+Войти можно по ссылке http://{{ HTTP_HOST }}{{ config('meerkat/user.url.public_login') }} используя
+- логин: {{ email }}
+- пароль: {{ password }}

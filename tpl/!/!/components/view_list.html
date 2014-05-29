@@ -1,0 +1,62 @@
+<div data-model="{{ model_name }}">
+    <div class="row">
+        <div class="pull-right"><a href="{{ base_url}}add" class="btn btn-success" data-action="add">Добавить</a></div>
+    </div>
+    <br />
+{% if items %}
+<table class="table table-striped">
+    {% block header %}
+    <thead>
+    <tr>
+        <th>#</th>
+        {% for field in fields %}
+            {% set label = arr_get(labels, field) %}
+            {% if field != primary_key%}
+            <th>{{ (list_sort ? list_sort.getSortLink(label, field) : label)|raw }}</th>
+            {% endif %}
+        {% endfor %}
+        {% if actions %}
+        <th colspan="{{ actions|length }}">Управление</th>
+        {% endif %}
+    </tr>
+    </thead>
+    {% endblock header %}
+    <tbody>
+    {% for item in items %}
+    {% set view_item = view_item(item) %}
+    {% block row %}
+    <tr data-id="{{ item.pk }}">
+        <td class="col-lg-0 text-center">{{ loop_index(loop.index, per_page) }}</td>
+        {% for field in fields %}
+            {% set label = arr_get(labels, field) %}
+            {% set alias = arr_get(aliases, field, field) %}
+            {% if field != primary_key %}
+                <td data-field="{{ alias }}">{{ view_item.get(field)|raw }}</td>
+                {#<td data-field="{{ alias }}">{{ list_view.getField(view_item, field)|raw }}</td>#}
+            {% endif %}
+        {% endfor %}
+        {% for action in actions %}
+        <td class="col-lg-0 text-center">
+            {{ list_view.getActionLink(item, action)|raw }}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endblock row %}
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-warning">
+    {% if use_filter %}
+    <strong>Ничего не найдено!</strong>  Попробуйте измените условия поиска или <a href="{{ PHP_SELF }}">сбросьте все фильтры</a>
+    {% else %}
+    <strong>Warning!</strong> Ничего не найдено
+    {% endif %}
+</div>
+
+{% endif %}
+{{ widget('Paginator',{per_page:per_page,cnt_all:cnt_all,uri:base_url})|raw }}
+
+{# {{ var_dump(list_sort) }} #}
+{# {{ var_dump(last_query) }} #}
+</div>

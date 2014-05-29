@@ -1,0 +1,15 @@
+{% extends "!/layouts/default" %}
+{% block seo_breadcrumbs %}
+{% endblock %}
+
+{% block layout %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4" data-original-title="">
+            {% block content %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "!/layouts/default" %}
+{% block layout %}
+    {% block layout_header %}
+        {% block layout_header_navbartop %}
+            {{ widget('Navbar_Top')|raw }}
+        {% endblock %}
+    {% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="bs-sidebar hidden-print">
+                {% block sidebar_left %}
+                    {{ parent() }}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            {% block content %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+        <div class="col-lg-3">
+            <div class="bs-sidebar hidden-print">
+                {% block sidebar_rigth %}
+                    {{ parent() }}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

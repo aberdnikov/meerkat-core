@@ -1,0 +1,7 @@
+{% for alert in alerts %}
+<div class="{{ alert.css }}">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {% if alert.title %}<h4>{{ alert.title|raw }}</h4>{% endif %}
+    {{ alert.text|raw }}
+</div>
+{% endfor %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ seo('title') }}</title>
+        <meta name="viewport" content="{{ seo('viewport') }}">
+        <meta name="description" content="{{ seo('meta_description') }}">
+        <meta name="keywords" content="{{ seo('meta_keywords') }}">
+        <link rel="shortcut icon" href="{{ seo('icon') }}">
+        {{ page_css|raw }}
+    </head>
+
+    <body {{ body_attr|raw }}>
+        {{ page_layout_before|raw }}
+        {{ page_layout|raw }}
+        {{ page_layout_after|raw }}
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+{{ widget('Popup')|raw }}
+{{ page_js|raw }}
+</body>
+</html>

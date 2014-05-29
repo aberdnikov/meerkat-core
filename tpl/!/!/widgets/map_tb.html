@@ -1,0 +1,23 @@
+{% macro items(items) %}
+    {% for item in items %}
+        {% set class = '' %}
+        {% if menu_item_active(item.item.url) %}
+            {% set class = class~' active' %}
+        {% endif %}
+        {% if item._items %}
+                {% set class = class~' dropdown' %}
+        {% endif %}
+        <li{% if class %} class="{{ class }}"{% endif %}>
+            <a{% if item._items %} data-toggle="dropdown" class="dropdown-toggle"{% endif %} href="{{ item.item.url }}">{{ item.item.text|raw }}{% if item._items %} <b class="caret"></b>{% endif %}</a>
+            {% if item._items %}
+            <ul class="dropdown-menu">
+                {{ _self.items(item._items) }}
+            </ul>
+            {% endif %}
+        </li>    
+    {% endfor %}
+{% endmacro %}
+
+{% if map %}
+    {{ _self.items(map) }}
+{% endif %}

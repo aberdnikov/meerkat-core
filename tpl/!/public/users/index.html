@@ -1,0 +1,26 @@
+{% extends "!/layouts/default" %}
+
+{% block body %}
+{% for user in users %}
+<div class="row">
+    <div class="col-lg-1">
+        {% set thumb = thumb_img('user', user.pk, 'medium', 'logo' ) %}
+        {% set view_item = view_item(user) %}
+        {{ thumb|raw }}
+    </div>
+    <div class="col-lg-11">
+        <b>{{ view_item.get('gender_icon')|raw }}<a href="{{ config('meerkat/user.url.public_users') }}{{ user.login }}">{{ user.username }}</a></b><br/>
+        На проекте:
+        <abbr title="{{ helper('Date', 'from_datetime', user.regdate ) }}">{{ helper('Date', 'diff_datetime', user.regdate, null, 'months,days,hours,minutes', false ) }}</abbr>
+        {% if links %}
+        <ul class="breadcrumb">
+            {% for k,v in links %}
+            <li><a href="{{ base_url }}{{ user.login }}{{ k }}">{{ v }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{{ widget('Paginator',{per_page:per_page,cnt_all:cnt_all,uri:base_url})|raw }}
+{% endblock %} 

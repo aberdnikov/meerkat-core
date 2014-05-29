@@ -1,0 +1,17 @@
+{% set abs = object.meerkat_rate_plus + object.meerkat_rate_minus %}
+{% set sum = object.meerkat_rate_plus - object.meerkat_rate_minus %}
+{% set plus = (abs ? 100*object.meerkat_rate_plus/abs : 50)|int %}
+{% set minus = 100-plus %}
+<div class="objrate" data-obj_id="{{ object.meerkat_model_id }}" data-type_id="{{ object.meerkat_model_type_id }}">
+    <div class="row">
+        <div class="progress" style="width:100%">
+            <div class="progress-bar progress-bar-danger" title="Минусов: {{ object.meerkat_rate_minus|int }}" style="width: {{ minus }}%">{{ minus}}%</div>
+            <div class="progress-bar progress-bar-success" title="Плюсов: {{ object.meerkat_rate_plus|int }}" style="width: {{ plus }}%">{{ plus }}%</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="objrate_minus"><span class="btn btn-danger btn-xs">&darr;</div>
+        <div class="objrate_value">{{ sum|int }}</div>
+        <div class="objrate_plus"><span class="btn btn-success btn-xs">&uarr;</div>
+    </div>
+</div>

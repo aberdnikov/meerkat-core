@@ -1,0 +1,38 @@
+{% extends "!/layouts/default" %}
+
+{% block body %}
+        {% set view_item = view_item(user) %}
+        {# {{ var_dump(user.as_array) }} #}
+        <div class="row">
+            <div class="col-lg-8">
+                <table class="table table-bordered table-condensed">
+                    <tr>
+                        <td>На проекте:
+                        </td>
+                        <td><abbr title="{{ helper('Date', 'from_datetime', user.regdate ) }}">{{ helper('Date', 'diff_datetime', user.regdate, null, 'years,months,days', false ) }}</abbr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Последний вход:
+                        </td>
+                        <td><abbr title="{{ helper('Date', 'from_datetime', user.last_login ) }}">{{ helper('Date', 'diff_datetime', user.last_login, null ) }}</abbr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Пол:
+                        </td>
+                        <td>{{ view_item.get('gender_icon')|raw }} {{ view_item.get('gender_text')|raw }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{ user.about|raw }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                {% set thumb = thumb_img('user', user.pk, 'large' ) %}
+                {{ thumb|raw }}
+            </div>
+        </div>
+{% endblock %}
