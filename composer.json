@@ -20,9 +20,9 @@
 	],
 	"require": {
 			"php": ">=5.3",
-			"twig/twig": "*",
 			"composer/installers": "*",
-			"ezyang/htmlpurifier": "*"
+			"meerkat/twig": "*",
+			"meerkat/htmlpurifier": "*"
 	},
      "include-path": [
         "include",
