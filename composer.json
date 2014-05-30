@@ -21,6 +21,7 @@
 	"require": {
 			"php": ">=5.3",
 			"composer/installers": "*",
+			"meerkat/meerkat-route": "*",
 			"meerkat/meerkat-ajax": "*",
 			"meerkat/meerkat-event": "*",
 			"meerkat/meerkat-email": "*",
