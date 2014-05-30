@@ -27,6 +27,8 @@
 			"meerkat/meerkat-email": "*",
 			"meerkat/meerkat-staticfiles": "*",
 			"meerkat/meerkat-form": "*",
+			"meerkat/meerkat-slot": "*",
+			"meerkat/meerkat-twig": "*",
 			"meerkat/kohana-core": "dev-3.3/master",
 			"meerkat/kohana-auth": "dev-3.3/master",
 			"meerkat/kohana-database": "dev-3.3/master",
@@ -36,7 +38,6 @@
 			"meerkat/kohana-minion": "dev-3.3/master",
 			"meerkat/kohana-unittest": "dev-3.3/master",
 			"meerkat/kohana-userguide": "dev-3.3/master",
-			"meerkat/twig": "*",
 			"meerkat/htmlpurifier": "*"
 	},
      "include-path": [
