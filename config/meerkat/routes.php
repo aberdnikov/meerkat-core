@@ -3,7 +3,6 @@
         'account'              => 2,
         '_twig'                => 1,
         '_form'                => 1,
-        'staticfiles'          => 1,
         'robots.txt'           => 1,
         'sitemap'              => 1,
         'public_login'         => 1,
