@@ -21,6 +21,7 @@
 	"require": {
 			"php": ">=5.3",
 			"composer/installers": "*",
+			"meerkat/meerkat-ajax": "*",
 			"meerkat/twig": "*",
 			"meerkat/htmlpurifier": "*"
 	},

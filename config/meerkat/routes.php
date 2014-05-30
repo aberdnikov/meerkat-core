@@ -1,7 +1,6 @@
 <?php
     return array(
         'account'              => 2,
-        '_ajax'                => 1,
         '_twig'                => 1,
         '_form'                => 1,
         'staticfiles'          => 1,
