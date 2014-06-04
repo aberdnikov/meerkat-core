@@ -37,7 +37,7 @@
 			"meerkat/kohana-minion": "dev-3.3/master",
 			"meerkat/kohana-unittest": "dev-3.3/master",
 			"meerkat/kohana-userguide": "dev-3.3/master",
-			"meerkat/meerkat-twig": "*",
+			"meerkat/twig": "*",
 			"meerkat/htmlpurifier": "*"
 	},
      "include-path": [
