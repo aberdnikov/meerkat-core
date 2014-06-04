@@ -427,6 +427,7 @@
         }
 
         function random_replicate($type) {
+			Database::$default = 'default';
             if ($type == Database::SELECT) {
                 $replicates = Kohana::$config->load('mysql/replicate')->as_array();
                 //var_dump($replicates);
