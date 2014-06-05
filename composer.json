@@ -25,6 +25,7 @@
 			"meerkat/meerkat-ajax": "*",
 			"meerkat/meerkat-event": "*",
 			"meerkat/meerkat-email": "*",
+			"meerkat/meerkat-thumb": "*",
 			"meerkat/meerkat-staticfiles": "*",
 			"meerkat/meerkat-form": "*",
 			"meerkat/meerkat-slot": "*",
