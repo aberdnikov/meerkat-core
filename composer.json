@@ -1,48 +1,49 @@
 {
-	"name": "meerkat/meerkat-core",
-	"type": "kohana-module",
-	"description": "Core module for MeerkatCMF (on Kohana 3.3)",
-	"homepage": "http://github.com/meerkat/core",
-	"license": "MIT",
-	"keywords": ["kohana", "module", "meerkat"],
-	"authors": [
-                {
-                        "name": "Bootstrap Core team",
-                        "homepage": "http://getbootstrap.com/",
-                        "role": "Developers"
-                }, 
-				{
-					"name": "Alexey Berdnikov",
-					"email": "aberdnikov@gmail.com",
-					"homepage": "https://github.com/aberdnikov",
-					"role": "Module maintainer"
-			}
-	],
-	"require": {
-			"php": ">=5.3",
-			"composer/installers": "*",
-			"meerkat/meerkat-route": "*",
-			"meerkat/meerkat-ajax": "*",
-			"meerkat/meerkat-event": "*",
-			"meerkat/meerkat-email": "*",
-			"meerkat/meerkat-thumb": "*",
-			"meerkat/meerkat-staticfiles": "*",
-			"meerkat/meerkat-form": "*",
-			"meerkat/meerkat-slot": "*",
-			"meerkat/kohana-core": "dev-3.3/master",
-			"meerkat/kohana-auth": "dev-3.3/master",
-			"meerkat/kohana-database": "dev-3.3/master",
-			"meerkat/kohana-orm": "dev-3.3/master",
-			"meerkat/kohana-cache": "dev-3.3/master",
-			"meerkat/kohana-image": "dev-3.3/master",
-			"meerkat/kohana-minion": "dev-3.3/master",
-			"meerkat/kohana-unittest": "dev-3.3/master",
-			"meerkat/kohana-userguide": "dev-3.3/master",
-			"meerkat/meerkat-twig": "*",
-			"meerkat/htmlpurifier": "*"
-	},
-     "include-path": [
+    "name": "meerkat/meerkat-core",
+    "type": "kohana-module",
+    "description": "Core module for MeerkatCMF (on Kohana 3.3)",
+    "homepage": "http://github.com/meerkat/core",
+    "license": "MIT",
+    "keywords": ["kohana", "module", "meerkat"],
+    "authors": [
+        {
+            "name": "Bootstrap Core team",
+            "homepage": "http://getbootstrap.com/",
+            "role": "Developers"
+        },
+        {
+            "name": "Alexey Berdnikov",
+            "email": "aberdnikov@gmail.com",
+            "homepage": "https://github.com/aberdnikov",
+            "role": "Module maintainer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "composer/installers": "*",
+        "meerkat/meerkat-route": "*",
+        "meerkat/meerkat-ajax": "*",
+        "meerkat/meerkat-event": "*",
+        "meerkat/meerkat-email": "*",
+        "meerkat/meerkat-thumb": "*",
+        "meerkat/meerkat-staticfiles": "*",
+        "meerkat/meerkat-form": "*",
+        "meerkat/meerkat-slot": "*",
+        "meerkat/meerkat-sf-jquery": "*",
+        "meerkat/kohana-core": "dev-3.3/master",
+        "meerkat/kohana-auth": "dev-3.3/master",
+        "meerkat/kohana-database": "dev-3.3/master",
+        "meerkat/kohana-orm": "dev-3.3/master",
+        "meerkat/kohana-cache": "dev-3.3/master",
+        "meerkat/kohana-image": "dev-3.3/master",
+        "meerkat/kohana-minion": "dev-3.3/master",
+        "meerkat/kohana-unittest": "dev-3.3/master",
+        "meerkat/kohana-userguide": "dev-3.3/master",
+        "meerkat/meerkat-twig": "*",
+        "meerkat/htmlpurifier": "*"
+    },
+    "include-path": [
         "include",
         "vendor"
-    ] 	
+    ]
 }
