@@ -1,5 +1,23 @@
 <div id="footer">
     <div class="container">
-        <p class="text-muted">{{ timer() }} sec</p>
+        <div class="well">
+            {% set is_prod = (ENVIRONMENT==10) %}
+            <span class="label label-{{ is_prod?'success':'danger'}}" title="{{ is_prod?'PRODUCTION':'DEVELOPMENT'}}">ENV</span>
+            <span class="label label-default">DB: {{ DRIVER_DATABASES ? DRIVER_DATABASES : 'без соединения с БД' }}</span><br/>
+            <span class="label [[ ONEPAGECACHE_TIMER_CLASS ]]">Time: [[ ONEPAGECACHE_TIMER ]] sec</span>
+            [[ ONEPAGECACHE_INFORMER ]]
+            <span class="label label-{{ TWIG_CACHE ?'success':'danger'}}" title="Кеширование шаблонов">Twig</span>
+            {% set is_memcache = (DRIVER_CACHE=='memcache') %}
+            <span class="label label-{{ is_memcache?'success':'danger'}}" title="{{ DRIVER_CACHE }}">Cache: {{ is_memcache?'memcache':'file'}}</span><br />
+            <span class="label label-{{ DRIVER_STATIC.deploy?'success':'danger' }}" title="deploy">d</span>
+            <span class="label label-{{ DRIVER_STATIC.js.external.min?'success':'danger' }}" title="js.external.min">js:e.m</span>
+            <span class="label label-{{ DRIVER_STATIC.js.external.build?'success':'danger' }}" title="js.external.build">js:e.b</span>
+            <span class="label label-{{ DRIVER_STATIC.js.inline.min?'success':'danger' }}" title="js.inline.min">js:i.m</span>
+            <span class="label label-{{ DRIVER_STATIC.js.inline.build?'success':'danger' }}" title="js.inline.build">js:i.b</span>
+            <span class="label label-{{ DRIVER_STATIC.js.onload.min?'success':'danger' }}" title="js.onload.min">js:o.m</span>
+            <span class="label label-{{ DRIVER_STATIC.js.onload.build?'success':'danger' }}" title="js.onload.build">js:o.b</span>
+            <span class="label label-{{ DRIVER_STATIC.css.external.min?'success':'danger' }}" title="css.external.min">css:e.m</span>
+            <span class="label label-{{ DRIVER_STATIC.css.external.build?'success':'danger' }}" title="css.external.build">css:e.b</span>
+        </div>
     </div>
 </div>
