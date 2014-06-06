@@ -111,7 +111,7 @@
 
         $application = ROOTPATH . 'applications/' . MEERKAT_APPNAME;
         define('APPPATH', realpath($application) . DIRECTORY_SEPARATOR);
-        defined('TMPPATH') || define('TMPPATH', APPPATH . 'tmp/');
+        defined('TMPPATH') || define('TMPPATH', ROOTPATH. 'tmp/');
 
         // Clean up the configuration vars
         unset($application, $modules, $system);
