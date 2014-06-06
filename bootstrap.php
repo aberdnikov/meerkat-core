@@ -222,7 +222,6 @@
         if (defined('TMP_IN_DOMAIN') && TMP_IN_DOMAIN) {
             $cachedir .= trim(str_replace(realpath($domains), '', DOMAINPATH), '/') . '/';
         }
-        exit($cachedir);
 
         Kohana::init(array('base_url'   => '/',
                            'index_file' => '',
