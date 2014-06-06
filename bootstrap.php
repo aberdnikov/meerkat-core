@@ -215,14 +215,14 @@
          * - boolean  caching     enable or disable internal caching                 FALSE
          * - boolean  expose      set the X-Powered-By header                        FALSE
          */
-        $tmpdir   = ROOTPATH . 'tmp/cache/';
-        $logdir   = ROOTPATH . 'tmp/logs/';
-        $cachedir = ROOTPATH . 'tmp/cache/';
+        $tmpdir   = TMPPATH . 'cache/';
+        $logdir   = TMPPATH . 'logs/';
+        $cachedir = TMPPATH . 'cache/';
         define('TMP_IN_DOMAIN', 1);
         if (defined('TMP_IN_DOMAIN') && TMP_IN_DOMAIN) {
             $cachedir .= trim(str_replace(realpath($domains), '', DOMAINPATH), '/') . '/';
         }
-        //exit($cachedir);
+        exit($cachedir);
 
         Kohana::init(array('base_url'   => '/',
                            'index_file' => '',

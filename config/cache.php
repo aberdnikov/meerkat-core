@@ -22,7 +22,7 @@ return array
     ),
     'file' => array(
         'driver' => 'file',
-        'cache_dir' => APPPATH . 'cache',
+        'cache_dir' => Kohana::$cache_dir,
         'default_expire' => 3600,
         'ignore_on_delete' => array(
             '.gitignore',
