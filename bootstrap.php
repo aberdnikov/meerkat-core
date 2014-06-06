@@ -307,7 +307,7 @@
                 foreach ($depends as $depend) {
                     $ext[$depend] = MODPATH . $depend;
                 }
-                $mods = array_merge($mods, $ext);
+                $mods = array_merge($ext, $mods);
                 Kohana::modules($mods);
             });
 
